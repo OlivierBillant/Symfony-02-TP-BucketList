@@ -3,9 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>
-			{% block title %}
-				Accueil
-			{% endblock %}
+			{% block title %}{% endblock %}
 		</title>
 		<link rel="icon" type="image/x-icon" href="{{asset('img/favicon.ico')}}">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -27,7 +25,7 @@
 				<div
 					class="'row">
 					{# Création d'une variable sur twig #}
-					{% set menu = ["Accueil"]  %}
+					{% set menu = ["Accueil", "About us", "List"]  %}
 					{# ,"Blog","Contact","A propos" #}
 
 					<nav class="navbar navbar-expand-lg bg-light">
@@ -47,7 +45,7 @@
 											<li
 												class="nav-item">
 												{#  affichage == Echo #}
-												<a class="nav-link" aria-current="page" href="{{ (ele|lower|replace({' ': '-'})) }}">{{ele|upper}}</a>
+												<a class="nav-link" aria-current="page" href="{{ (ele|lower|replace({' ': ''})) }}">{{ele|upper}}</a>
 												{# Alternativement on peut utiliser pour href : "{{ path('app_'~ele)}}" #}
 											</li>
 										{% else %}
@@ -64,12 +62,13 @@
 						</div>
 					</nav>
 				</div>
-
 			</header>
 
-			{% block body %}{% endblock %}
-
-			<footer>
+			<main class="min-vh-80">
+				{% block body %}{% endblock %}
+			</main>
+			
+			<footer class="mt-auto">
 				<div class="row text-center">
 					<p>
 						&copy; BucketList
@@ -77,6 +76,7 @@
 					</p>
 				</div>
 			</footer>
+
 			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
 		</div>

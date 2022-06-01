@@ -1,6 +1,11 @@
 
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
-body{
+main{
   font-family: "Roboto";
+  min-height: 80vh;
+}
+
+.logo img{
+  height: 80px;
 }
