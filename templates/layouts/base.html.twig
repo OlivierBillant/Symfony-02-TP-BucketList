@@ -14,9 +14,7 @@
 			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
 
-		{% block javascripts %}
-			{{ encore_entry_script_tags('app') }}
-		{% endblock %}
+
 	</head>
 
 	<body>
@@ -25,7 +23,7 @@
 				<div
 					class="'row">
 					{# Création d'une variable sur twig #}
-					{% set menu = ["Accueil", "About us", "List"]  %}
+					{% set menu = ["Accueil", "About us", "List", "Legal-stuff"]  %}
 					{# ,"Blog","Contact","A propos" #}
 
 					<nav class="navbar navbar-expand-lg bg-light">
@@ -64,23 +62,26 @@
 				</div>
 			</header>
 
-			<main class="min-vh-80">
-				{% block body %}{% endblock %}
-			</main>
-			
-			<footer class="mt-auto">
-				<div class="row text-center">
-					<p>
-						&copy; BucketList
-						{{"now"|date("Y")}}
-					</p>
-				</div>
-			</footer>
+			<main class="min-vh-80"> {% block body %}{% endblock %}
+				</main>
 
-			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+				<footer class="mt-auto">
+					<div class="row text-center">
+						<p>
+							&copy; BucketList
+							{{"now"|date("Y")}}
+						</p>
+					</div>
+				</footer>
 
-		</div>
-	</body>
+				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+			</div>
+
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+			{% block javascripts %}
+			{% endblock %}
+		</body>
 
 
-</html>
+	</html>
