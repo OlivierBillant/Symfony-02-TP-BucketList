@@ -5,8 +5,21 @@
 
 {% block body %}
 	<h1>Liste</h1>
-
+	{{dump( wishList)}}
 	<p>
-		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Placeat dolorum odit fugiat suscipit alias exercitationem! In sit pariatur ut, aliquam corrupti sed officiis voluptate nisi veritatis id, a consectetur tenetur.
+		{# Conditionnelle d'affichage sur le nombre de voeux #}
+		<br> La liste de souhait comporte [NombreDeVoeux] voeux.
+		<br>						
+		<br> Les voicis :
+		<ul>
+			{% for wish in wishList %}
+				<a href="/detail"><li>{{ wish.title}}
+					{# <ul>
+						<li>{{wish.author}}</li>
+						<li>{{wish.description}}</li>
+					</ul> #}
+				</li></a>
+			{% endfor %}
+		</ul>
 	</p>
 {% endblock %}
