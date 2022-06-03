@@ -2,3 +2,24 @@
 {% block title %}
 	Détail
 {% endblock %}
+
+{% block body %}
+	<h1>Liste</h1>
+	{{dump( wish)}}
+	<p>
+		{# Conditionnelle d'affichage sur le nombre de voeux #}
+		<br> Le détail de ton voeux :
+		
+		<ul>
+			
+				<li>{{ wish.title}}
+					<ul>
+						<li>{{wish.author}}</li>
+						<li>{{wish.description}}</li>
+						<li>{{wish.dateCreated}}</li>
+					</ul>
+				</li>
+			{% endfor %}
+		</ul>
+	</p>
+{% endblock %}

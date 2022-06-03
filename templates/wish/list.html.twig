@@ -13,12 +13,14 @@
 		<br> Les voicis :
 		<ul>
 			{% for wish in wishList %}
-				<a href="/detail"><li>{{ wish.title}}
+			<form action="" method="post">
+				<a href="/detail/"><li>{{ wish.title}}
 					{# <ul>
 						<li>{{wish.author}}</li>
 						<li>{{wish.description}}</li>
 					</ul> #}
 				</li></a>
+			</form>
 			{% endfor %}
 		</ul>
 	</p>

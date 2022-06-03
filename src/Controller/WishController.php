@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Wish;
 use App\Repository\WishRepository;
+use DateTime;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping\Entity;
@@ -24,13 +25,6 @@ class WishController extends AbstractController {
     }
 
 
-     /**
-     * @Route("/detail",name="app_detail")
-     */
-    public function detail():Response{
-        return $this->render("wish/detail.html.twig");
-    }
-
     /**
      * @Route("/add", name="app_add")
      */
@@ -40,20 +34,22 @@ class WishController extends AbstractController {
         $w->setTitle("Souhait 1");
         $w->setDescription("Blablablabla");
         $w->setAuthor("Auteur1");
+        $w->setDateCreated(new \DateTime());
         $em->persist($w);
         $em->flush();
 
-        return $this->render('wish/list.html.twig', [
-            'controller_name' => 'ArticleController',
-        ]);
+        return $this->render('wish/add.html.twig');
     }
 
-/**
-     * @Route("/afficher", name="app_display")
+
+    /**
+     * @Route("/detail", name="app_detail")
      */
-    public function afficher(WishRepository $WishRepo): Response
+    public function detail(WishRepository $WishRepo, $id): Response
     {
-        dd($WishRepo->findAll());
+        $wish = $WishRepo->find($id);
+
+        return $this->render('wish/detail.html.twig', ['wish' => $wish]);
     }
 
 }
