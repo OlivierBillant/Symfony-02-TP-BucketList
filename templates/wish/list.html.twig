@@ -13,12 +13,7 @@
 		<br> Les voicis :
 		<ul>
 			{% for wish in wishList %}
-			<form action="" method="post">
-				<a href="/detail/"><li>{{ wish.title}}
-					{# <ul>
-						<li>{{wish.author}}</li>
-						<li>{{wish.description}}</li>
-					</ul> #}
+				<a href="/detail?id={{wish.id}}"><li>{{wish.title}}
 				</li></a>
 			</form>
 			{% endfor %}

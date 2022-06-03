@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -45,8 +46,10 @@ class WishController extends AbstractController {
     /**
      * @Route("/detail", name="app_detail")
      */
-    public function detail(WishRepository $WishRepo, $id): Response
+    public function detail(WishRepository $WishRepo, Request $request): Response
     {
+        $id= $request->query->get('id');
+        var_dump($id);
         $wish = $WishRepo->find($id);
 
         return $this->render('wish/detail.html.twig', ['wish' => $wish]);

@@ -16,10 +16,9 @@
 					<ul>
 						<li>{{wish.author}}</li>
 						<li>{{wish.description}}</li>
-						<li>{{wish.dateCreated}}</li>
+						<li>{{wish.dateCreated|date("d-m-Y")}}</li>
 					</ul>
 				</li>
-			{% endfor %}
 		</ul>
 	</p>
 {% endblock %}
