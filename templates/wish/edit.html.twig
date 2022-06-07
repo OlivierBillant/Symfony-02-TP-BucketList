@@ -1,0 +1,21 @@
+{% extends "layouts/base.html.twig" %}
+
+{% block title %}
+	<title>Modifier le voeux</title>
+{% endblock %}
+
+{% block body %}
+    <h1>Edit Wish</h1>
+    <div class="row">
+        {% for label,messages in app.flashes %}
+            {% for message in messages %}
+            <span class="alert alert-{{label}}"> {{message}}</span>
+            {% endfor %}
+        {% endfor %}
+    </div>
+    {{ include('wish/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a class="btn btn-warning" href="{{ path('app_wish_index') }}">back to list</a>
+
+    {{ include('wish/_delete_form.html.twig') }}
+{% endblock %}

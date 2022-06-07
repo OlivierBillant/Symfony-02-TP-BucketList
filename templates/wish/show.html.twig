@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<title>Wish</title>
+
+{% block body %}
+    <h1>Wish</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ wish.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ wish.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ wish.description }}</td>
+            </tr>
+            <tr>
+                <th>Author</th>
+                <td>{{ wish.author }}</td>
+            </tr>
+            <tr>
+                <th>IsPublished</th>
+                <td>{{ wish.isPublished ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>DateCreated</th>
+                <td>{{ wish.dateCreated ? wish.dateCreated|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_wish_index') }}">back to list</a>
+
+    <a href="{{ path('app_wish_edit', {'id': wish.id}) }}">edit</a>
+
+    {{ include('wish/_delete_form.html.twig') }}
+{% endblock %}

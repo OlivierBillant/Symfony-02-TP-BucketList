@@ -18,14 +18,14 @@ class MainController extends AbstractController {
 
 
      /**
-     * @Route("/aboutus",name="app_aboutus")
+     * @Route("/aboutus",name="app_about_us")
      */
     public function aboutus():Response{
         return $this->render("main/aboutus.html.twig");
     }
 
      /**
-     * @Route("/legal-stuff",name="app_legal-stuff")
+     * @Route("/legal-stuff",name="app_legal_stuff")
      */
     public function legalStuff():Response{
         return $this->render("main/legal-stuff.html.twig");

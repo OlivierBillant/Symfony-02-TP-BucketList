@@ -23,7 +23,7 @@
 				<div
 					class="'row">
 					{# Création d'une variable sur twig #}
-					{% set menu = ["Accueil", "About us", "List", "Legal-stuff"]  %}
+					{% set menu = ["Accueil", "About us", "Liste", "Wish Index", "New Wish", "Legal Stuff"]  %}
 					{# ,"Blog","Contact","A propos" #}
 
 					<nav class="navbar navbar-expand-lg bg-light">
@@ -43,8 +43,7 @@
 											<li
 												class="nav-item">
 												{#  affichage == Echo #}
-												<a class="nav-link" aria-current="page" href="{{ (ele|lower|replace({' ': ''})) }}">{{ele|upper}}</a>
-												{# Alternativement on peut utiliser pour href : "{{ path('app_'~ele)}}" #}
+												<a class="nav-link" aria-current="page" href="{{ path('app_'~ele|lower|replace({' ': '_'})) }}">{{ele|upper}}</a>
 											</li>
 										{% else %}
 											<li
@@ -62,7 +61,7 @@
 				</div>
 			</header>
 
-			<main class="min-vh-80"> {% block body %}{% endblock %}
+			<main class="col-6 offset-3"> {% block body %}{% endblock %}
 				</main>
 
 				<footer class="mt-auto">

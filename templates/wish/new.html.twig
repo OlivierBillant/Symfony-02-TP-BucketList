@@ -1,0 +1,17 @@
+{% extends "layouts/base.html.twig" %}
+{% block title %}
+	<title>New Wish</title>
+{% endblock %}
+{% block body %}
+	<h1>Create new Wish</h1>
+    <div class="row">
+        {% for label,messages in app.flashes %}
+            {% for message in messages %}
+            <span class="alert alert-{{label}}"> {{message}}</span>
+            {% endfor %}
+        {% endfor %}
+    </div>
+	{{ include('wish/_form.html.twig') }}
+
+	<a class="btn btn-warning" href="{{ path('app_wish_index') }}">back to list</a>
+{% endblock %}
