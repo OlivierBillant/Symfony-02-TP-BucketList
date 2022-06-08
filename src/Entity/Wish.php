@@ -10,6 +10,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Wish
 {
+
+public function __construct(){
+    $this->setIsPublished(true);
+    $this->setDateCreated(new \DateTime());
+
+}
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
