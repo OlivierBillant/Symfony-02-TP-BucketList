@@ -60,6 +60,7 @@ class WishController extends AbstractController
     public function liste(WishRepository $wishRepository): Response
     {
         return $this->render("wish/liste.html.twig", ["wishList" => $wishRepository->findBy(['isPublished' => true], ['dateCreated' => 'ASC'])]);
+        // return $this->render("wish/liste.html.twig", ["wishList" => $wishRepository->findOneByIdJoinedToCategory()]);
     }
 
 
