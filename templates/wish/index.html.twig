@@ -35,8 +35,8 @@
 					<td>{{ wish.isPublished ? 'Yes' : 'No' }}</td>
 					<td>{{ wish.dateCreated ? wish.dateCreated|date('Y-m-d H:i:s') : '' }}</td>
 					<td>
-						<a href="{{ path('app_wish_show', {'id': wish.id}) }}">show</a>
-						<a href="{{ path('app_wish_edit', {'id': wish.id}) }}">edit</a>
+						<a class="btn btn-primary" href="{{ path('app_wish_show', {'id': wish.id}) }}"><i class="fa-solid fa-eye"></i></a>
+						<a class="btn btn-warning" href="{{ path('app_wish_edit', {'id': wish.id}) }}"><i class="fa-solid fa-pen"></i></a>
 					</td>
 				</tr>
 			{% else %}
