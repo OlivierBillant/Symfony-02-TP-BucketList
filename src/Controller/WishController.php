@@ -53,13 +53,13 @@ class WishController extends AbstractController
             'form' => $form,
         ]);
     }
-    
+
      /**
      * @Route("/liste",name="app_liste", methods={"GET"})
      */
     public function liste(WishRepository $wishRepository): Response
     {
-        return $this->render("wish/liste.html.twig", ["wishList" => $wishRepository->findBy(['isPublished' => true])]);
+        return $this->render("wish/liste.html.twig", ["wishList" => $wishRepository->findBy(['isPublished' => true], ['dateCreated' => 'ASC'])]);
     }
 
 
