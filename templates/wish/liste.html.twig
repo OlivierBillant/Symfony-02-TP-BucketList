@@ -21,8 +21,8 @@
 					<th>Title</th>
 					<th>Description</th>
 					<th>Author</th>
-					<th>IsPublished</th>
-					<th>DateCreated</th>
+					{# <th>IsPublished</th> #}
+					{# <th>DateCreated</th> #}
 					<th>actions</th>
 				</tr>
 			</thead>
@@ -34,8 +34,8 @@
 							<td>{{ wish.title }}</td>
 							<td>{{ wish.description }}</td>
 							<td>{{ wish.author }}</td>
-							<td>{{ wish.isPublished ? 'Yes' : 'No' }}</td>
-							<td>{{ wish.dateCreated ? wish.dateCreated|date('Y-m-d H:i:s') : '' }}</td>
+							{# <td>{{ wish.isPublished ? 'Yes' : 'No' }}</td> #}
+							{# <td>{{ wish.dateCreated ? wish.dateCreated|date('Y-m-d H:i:s') : '' }}</td> #}
 							<td>
 								<a href="{{ path('app_wish_show', {'id': wish.id}) }}">show</a>
 								<a href="{{ path('app_wish_edit', {'id': wish.id}) }}">edit</a>
