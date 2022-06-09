@@ -1,9 +1,11 @@
-<!DOCTYPE html>
+{% extends 'layouts/base.html.twig' %}
 
-<title>Register</title>
+{% block title %}
+Inscription
+{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    <h1>Inscription</h1>
 
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email) }}
