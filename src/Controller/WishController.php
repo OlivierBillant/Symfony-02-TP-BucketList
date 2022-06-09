@@ -13,7 +13,7 @@ use DateTime;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping\Entity;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/wish")
@@ -33,6 +33,7 @@ class WishController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/new", name="app_new_wish", methods={"GET", "POST"})
      */
     public function new(Request $request, WishRepository $wishRepository): Response
@@ -40,7 +41,6 @@ class WishController extends AbstractController
         $wish = new Wish();
         $form = $this->createForm(WishType::class, $wish);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $wishRepository->add($wish, true);
             // Ajouter un message de confirmation
