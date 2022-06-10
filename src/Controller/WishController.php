@@ -13,14 +13,21 @@ use DateTime;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping\Entity;
+use ProxyManager\ProxyGenerator\ValueHolder\MethodGenerator\Constructor;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use App\Util\Censurator;
 
 /**
  * @Route("/wish")
  */
 class WishController extends AbstractController
 {
+private $censurator;
 
+    public function __construct(Censurator $censurator)
+    {
+        $this->censurator = $censurator;
+    }
 
     /**
      * @IsGranted("ROLE_USER")
@@ -43,6 +50,9 @@ class WishController extends AbstractController
         $form = $this->createForm(WishType::class, $wish);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            // Censurer le message
+            $wish->setDescription($this->censurator->purify($wish->getDescription()));
+            $this->addFlash('success', 'Voeux censuré');
             $wishRepository->add($wish, true);
             // Ajouter un message de confirmation
             $this->addFlash('success', 'Voeux ajouté');
@@ -60,7 +70,8 @@ class WishController extends AbstractController
      */
     public function liste(WishRepository $wishRepository): Response
     {
-        return $this->render("wish/liste.html.twig", ["wishList" => $wishRepository->findBy(['isPublished' => true], ['dateCreated' => 'ASC'])]);
+        
+        return $this->render("wish/liste.html.twig", ["wishList" => $wishRepository->findBy(['isPublished' => true], ['dateCreated' => 'DESC'])]);
         // return $this->render("wish/liste.html.twig", ["wishList" => $wishRepository->findOneByIdJoinedToCategory()]);
     }
 
