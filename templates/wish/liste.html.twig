@@ -52,9 +52,11 @@
 							<a class="btn btn-primary" href="{{ path('app_wish_show', {'id': wish.id}) }}">
 								<i class="fa-solid fa-eye"></i>
 							</a>
+							{% if is_granted('ROLE_USER') %}
 							<a class="btn btn-warning" href="{{ path('app_wish_edit', {'id': wish.id}) }}">
 								<i class="fa-solid fa-pen"></i>
 							</a>
+							{% endif %}
 						</td>
 					</tr>
 					{# {% endif %} #}

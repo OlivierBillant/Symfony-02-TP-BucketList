@@ -23,6 +23,7 @@ class WishController extends AbstractController
 
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/", name="app_wish_index", methods={"GET"})
      */
     public function index(WishRepository $wishRepository): Response
