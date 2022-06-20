@@ -53,7 +53,6 @@ class WishRepository extends ServiceEntityRepository
             WHERE p.isPublished = TRUE')
             // ->setParameter('isPublished', $wishId)
             ;
-
         return $query->getResult();
     }
 
